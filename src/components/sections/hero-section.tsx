@@ -1,16 +1,11 @@
 "use client";
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import { ArrowDown } from "lucide-react";
+import { Download } from "lucide-react"; // Changed from ArrowDown to Download
 
 export function HeroSection() {
-  const scrollToContact = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    const contactSection = document.getElementById("contact");
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  // Removed scrollToContact as the button's purpose has changed.
+  // A new handler could be added if specific client-side logic is needed for download.
   
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center bg-secondary/30 relative overflow-hidden pt-16">
@@ -24,9 +19,12 @@ export function HeroSection() {
           A passionate developer creating digital experiences. Welcome to my story.
         </p>
         <div className="space-x-4">
-          <Button size="lg" onClick={scrollToContact} className="bg-primary hover:bg-primary/90 text-primary-foreground">
-            Get In Touch
-            <ArrowDown className="ml-2 h-5 w-5 animate-bounce" />
+          <Button size="lg" asChild className="bg-primary hover:bg-primary/90 text-primary-foreground">
+            {/* Using <a> tag for direct download functionality */}
+            <a href="/resume-placeholder.pdf" download="Your_Name_Resume.pdf">
+              Download Resume
+              <Download className="ml-2 h-5 w-5" /> {/* Removed animate-bounce */}
+            </a>
           </Button>
         </div>
       </div>
@@ -43,3 +41,4 @@ export function HeroSection() {
 
 // Helper to add some subtle interactivity or visual flair if needed in the future
 // For now, the CSS grid pattern handles visual appeal.
+

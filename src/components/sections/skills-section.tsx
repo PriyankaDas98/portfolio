@@ -1,7 +1,6 @@
 import React from 'react';
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Zap, Cog, Users, Brain } from "lucide-react"; // Zap for Languages, Cog for Frameworks, Users for Soft Skills, Brain for Tools/Concepts
+import { Zap, Cog, Users, Brain, Database } from "lucide-react"; // Added Database icon
 
 interface SkillCategory {
   name: string;
@@ -27,7 +26,7 @@ const skillCategories: SkillCategory[] = [
   },
   {
     name: "Databases",
-    icon: Users, // Re-using icon, ideally a database icon
+    icon: Database, // Changed from Users to Database
     skills: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "SQL Server"],
   },
    {
@@ -47,21 +46,19 @@ export function SkillsSection() {
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {skillCategories.map((category, index) => (
-            <Card key={index} className="shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <CardHeader className="flex flex-row items-center space-x-3">
+            <div key={index} className="p-6 rounded-lg border bg-card text-card-foreground shadow-md hover:shadow-lg transition-shadow duration-300">
+              <div className="flex items-center space-x-3 mb-4">
                 <category.icon className="h-6 w-6 text-accent" />
-                <CardTitle className="text-xl text-primary">{category.name}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill) => (
-                    <Badge key={skill} variant="secondary" className="text-sm px-3 py-1 bg-accent/20 text-accent-foreground hover:bg-accent/30">
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                <h3 className="text-xl font-semibold text-primary">{category.name}</h3>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {category.skills.map((skill) => (
+                  <Badge key={skill} variant="secondary" className="text-sm px-3 py-1 bg-accent/20 text-accent-foreground hover:bg-accent/30">
+                    {skill}
+                  </Badge>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </div>

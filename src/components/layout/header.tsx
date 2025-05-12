@@ -4,7 +4,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Code2 } from "lucide-react";
+import { Menu } from "lucide-react"; // Removed Code2 import
 import React from "react";
 
 const navItems = [
@@ -41,8 +41,8 @@ export function Header() {
       }`}
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
-        <Link href="#" onClick={(e) => scrollToSection(e, '#hero')} className="flex items-center gap-2 text-primary hover:text-accent transition-colors">
-          <Code2 className="h-7 w-7" />
+        <Link href="#" onClick={(e) => scrollToSection(e, '#hero')} className="flex items-center text-primary hover:text-accent transition-colors">
+          {/* <Code2 className="h-7 w-7" /> Removed logo icon */}
           <span className="text-xl font-bold">My Digital Story</span>
         </Link>
 
@@ -66,8 +66,8 @@ export function Header() {
             </SheetTrigger>
             <SheetContent side="right" className="w-[280px] bg-card">
               <div className="flex flex-col space-y-4 p-6">
-                <Link href="#" onClick={(e) => scrollToSection(e, '#hero')} className="flex items-center gap-2 text-primary mb-4">
-                   <Code2 className="h-7 w-7" />
+                <Link href="#" onClick={(e) => scrollToSection(e, '#hero')} className="flex items-center text-primary mb-4">
+                   {/* <Code2 className="h-7 w-7" /> Removed logo icon */}
                   <span className="text-xl font-bold">My Digital Story</span>
                 </Link>
                 {navItems.map((item) => (
@@ -85,3 +85,4 @@ export function Header() {
     </header>
   );
 }
+

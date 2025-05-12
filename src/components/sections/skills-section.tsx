@@ -1,40 +1,87 @@
 
 import React from 'react';
-import { Badge } from "@/components/ui/badge";
-import { Zap, Cog, Users, Brain, Database } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Zap, // Main section icon
+  FileJson2, // JavaScript
+  Type, // TypeScript
+  Terminal, // Python
+  Coffee, // Java
+  CodeSquare, // C#
+  Move, // Go (placeholder)
+  Atom, // React
+  Server, // Next.js
+  Shield, // Angular (placeholder for shape)
+  LayoutPanelLeft, // Vue.js (placeholder for shape)
+  Hexagon, // Node.js
+  Route, // Express.js
+  Leaf, // Spring Boot, MongoDB
+  Dot, // .NET Core (placeholder)
+  Container, // Docker
+  ShipWheel, // Kubernetes
+  Cloud, // AWS
+  CloudSun, // Azure (placeholder)
+  CloudDrizzle, // Google Cloud (placeholder)
+  GitFork, // Git
+  Cog, // Jenkins
+  Blocks, // Terraform
+  Database, // PostgreSQL (generic)
+  DatabaseZap, // MySQL
+  Gauge, // Redis
+  DatabaseBackup, // SQL Server
+  Lightbulb, // Problem Solving
+  MessageCircle, // Communication
+  Users, // Teamwork
+  Shuffle, // Adaptability
+  UserCheck, // Leadership
+  Brain, // Critical Thinking
+} from "lucide-react";
 
-interface SkillCategory {
+interface Skill {
   name: string;
   icon: React.ElementType;
-  skills: string[];
 }
 
-const skillCategories: SkillCategory[] = [
-  {
-    name: "Programming Languages",
-    icon: Zap,
-    skills: ["JavaScript", "TypeScript", "Python", "Java", "C#", "Go"],
-  },
-  {
-    name: "Frameworks & Libraries",
-    icon: Cog,
-    skills: ["React", "Next.js", "Angular", "Vue.js", "Node.js", "Express.js", "Spring Boot", ".NET Core"],
-  },
-  {
-    name: "Tools & Platforms",
-    icon: Brain,
-    skills: ["Docker", "Kubernetes", "AWS", "Azure", "Google Cloud", "Git", "Jenkins", "Terraform"],
-  },
-  {
-    name: "Databases",
-    icon: Database,
-    skills: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "SQL Server"],
-  },
-   {
-    name: "Soft Skills",
-    icon: Users,
-    skills: ["Problem Solving", "Communication", "Teamwork", "Adaptability", "Leadership", "Critical Thinking"],
-  }
+// Consolidated list of skills
+const allSkills: Skill[] = [
+  // Programming Languages
+  { name: "JavaScript", icon: FileJson2 },
+  { name: "TypeScript", icon: Type },
+  { name: "Python", icon: Terminal },
+  { name: "Java", icon: Coffee },
+  { name: "C#", icon: CodeSquare },
+  { name: "Go", icon: Move },
+  // Frameworks & Libraries
+  { name: "React", icon: Atom },
+  { name: "Next.js", icon: Server },
+  { name: "Angular", icon: Shield },
+  { name: "Vue.js", icon: LayoutPanelLeft },
+  { name: "Node.js", icon: Hexagon },
+  { name: "Express.js", icon: Route },
+  { name: "Spring Boot", icon: Leaf },
+  { name: ".NET Core", icon: Dot },
+  // Tools & Platforms
+  { name: "Docker", icon: Container },
+  { name: "Kubernetes", icon: ShipWheel },
+  { name: "AWS", icon: Cloud },
+  { name: "Azure", icon: CloudSun },
+  { name: "Google Cloud", icon: CloudDrizzle },
+  { name: "Git", icon: GitFork },
+  { name: "Jenkins", icon: Cog },
+  { name: "Terraform", icon: Blocks },
+  // Databases
+  { name: "PostgreSQL", icon: Database },
+  { name: "MySQL", icon: DatabaseZap },
+  { name: "MongoDB", icon: Leaf },
+  { name: "Redis", icon: Gauge },
+  { name: "SQL Server", icon: DatabaseBackup },
+  // Soft Skills
+  { name: "Problem Solving", icon: Lightbulb },
+  { name: "Communication", icon: MessageCircle },
+  { name: "Teamwork", icon: Users },
+  { name: "Adaptability", icon: Shuffle },
+  { name: "Leadership", icon: UserCheck },
+  { name: "Critical Thinking", icon: Brain },
 ];
 
 export function SkillsSection() {
@@ -42,28 +89,25 @@ export function SkillsSection() {
     <section id="skills" className="bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="text-3xl md:text-4xl font-bold text-primary text-center mb-12 flex items-center justify-center">
-          <Zap className="mr-3 h-8 w-8 text-accent" /> {/* Main section icon */}
+          <Zap className="mr-3 h-8 w-8 text-accent" />
           Skills Showcase
         </h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skillCategories.map((category, index) => (
-            <div key={index} className="p-4 rounded-lg border">
-              <div className="flex items-center space-x-3 mb-4">
-                <category.icon className="h-6 w-6 text-accent" />
-                <h3 className="text-xl font-semibold text-primary">{category.name}</h3>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill) => (
-                  <Badge key={skill} variant="outline" className="text-sm px-3 py-1">
-                    {skill}
-                  </Badge>
-                ))}
-              </div>
+        <Card className="shadow-xl">
+          <CardContent className="pt-6"> {/* Added padding top as CardHeader is removed */}
+            <div className="flex flex-wrap justify-center gap-4">
+              {allSkills.map((skill) => (
+                <div
+                  key={skill.name}
+                  className="flex flex-col items-center justify-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 w-28 h-28 bg-card text-center"
+                >
+                  <skill.icon className="h-8 w-8 mb-2 text-accent" />
+                  <span className="text-xs font-medium text-foreground">{skill.name}</span>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </CardContent>
+        </Card>
       </div>
     </section>
   );
 }
-

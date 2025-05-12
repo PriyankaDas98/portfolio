@@ -1,6 +1,7 @@
+
 import React from 'react';
 import { Badge } from "@/components/ui/badge";
-import { Zap, Cog, Users, Brain, Database } from "lucide-react"; // Added Database icon
+import { Zap, Cog, Users, Brain, Database } from "lucide-react";
 
 interface SkillCategory {
   name: string;
@@ -26,7 +27,7 @@ const skillCategories: SkillCategory[] = [
   },
   {
     name: "Databases",
-    icon: Database, // Changed from Users to Database
+    icon: Database,
     skills: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "SQL Server"],
   },
    {
@@ -46,14 +47,14 @@ export function SkillsSection() {
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {skillCategories.map((category, index) => (
-            <div key={index} className="p-6 rounded-lg border bg-card text-card-foreground shadow-md hover:shadow-lg transition-shadow duration-300">
+            <div key={index} className="p-4 rounded-lg border">
               <div className="flex items-center space-x-3 mb-4">
                 <category.icon className="h-6 w-6 text-accent" />
                 <h3 className="text-xl font-semibold text-primary">{category.name}</h3>
               </div>
               <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill) => (
-                  <Badge key={skill} variant="secondary" className="text-sm px-3 py-1 bg-accent/20 text-accent-foreground hover:bg-accent/30">
+                  <Badge key={skill} variant="outline" className="text-sm px-3 py-1">
                     {skill}
                   </Badge>
                 ))}
@@ -65,3 +66,4 @@ export function SkillsSection() {
     </section>
   );
 }
+
